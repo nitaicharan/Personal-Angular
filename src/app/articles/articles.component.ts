@@ -14,15 +14,23 @@ import { Article } from './types/Article';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesComponent implements OnInit {
-  $articles: Observable<Article[]> = from([]);
+  data$: Observable<{ articles: Article[]; articlesCount: number }> = from([]);
 
   constructor(private readonly service: ArticleService) {}
 
   ngOnInit(): void {
-    this.$articles = this.service.list().pipe(map((i) => i.articles));
+    this.data$ = this.service.list();
   }
 
   trackByFn(_: number, item: Article) {
     return item.slug;
+  }
+
+  generatePageList(items: number) {
+    const offset = 0;
+    const limit = 10;
+
+    const length = Math.ceil(items / limit);
+    return Array.from({ length }, (_, i) => i + 1);
   }
 }

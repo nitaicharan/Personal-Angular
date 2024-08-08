@@ -7,7 +7,7 @@ export class ArticleService {
   constructor(private readonly http: HttpClient) {}
 
   list() {
-    return this.http.get<{ articles: Article[] }>(
+    return this.http.get<{ articles: Article[]; articlesCount: number }>(
       'https://api.realworld.io/api/articles',
     );
   }

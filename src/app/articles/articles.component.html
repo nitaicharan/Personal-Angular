@@ -20,46 +20,50 @@
           </ul>
         </div>
 
-        <div
-          *ngFor="let article of $articles | async; trackBy: trackByFn"
-          class="article-preview"
-        >
-          <div class="article-meta">
-            <a href="/profile/{{ article.author.username }}">
-              <img [src]="article.author.image" />
-            </a>
-            <div class="info">
-              <a href="/profile/{{ article.author.username }}" class="author">
-                {{ article.author.username }}
+        <ng-container *ngIf="data$ | async as data">
+          @for (article of data.articles; track article.slug) {
+            <div class="article-preview">
+              <div class="article-meta">
+                <a href="/profile/{{ article.author.username }}">
+                  <img [src]="article.author.image" />
+                </a>
+                <div class="info">
+                  <a
+                    href="/profile/{{ article.author.username }}"
+                    class="author"
+                  >
+                    {{ article.author.username }}
+                  </a>
+                  <span class="date">{{
+                    article.createdAt | date: "longDate"
+                  }}</span>
+                </div>
+                <button class="btn btn-outline-primary btn-sm pull-xs-right">
+                  <i class="ion-heart"></i> {{ article.favoritesCount }}
+                </button>
+              </div>
+              <a href="/article/{{ article.slug }}" class="preview-link">
+                <h1>{{ article.title }}</h1>
+                <p>{{ article.description }}</p>
+                <span>Read more...</span>
+                @for (tag of article.tagList; track tag) {
+                  <ul class="tag-list">
+                    <li class="tag-default tag-pill tag-outline">{{ tag }}</li>
+                  </ul>
+                }
               </a>
-              <span class="date">{{
-                article.createdAt | date: "longDate"
-              }}</span>
             </div>
-            <button class="btn btn-outline-primary btn-sm pull-xs-right">
-              <i class="ion-heart"></i> {{ article.favoritesCount }}
-            </button>
-          </div>
-          <a href="/article/{{ article.slug }}" class="preview-link">
-            <h1>{{ article.title }}</h1>
-            <p>{{ article.description }}</p>
-            <span>Read more...</span>
-            @for (tag of article.tagList; track tag) {
-              <ul class="tag-list">
-                <li class="tag-default tag-pill tag-outline">{{ tag }}</li>
-              </ul>
-            }
-          </a>
-        </div>
+          }
 
-        <ul class="pagination">
-          <li class="page-item active">
-            <a class="page-link" href="">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="">2</a>
-          </li>
-        </ul>
+          <ul class="pagination">
+            @for (page of generatePageList(data.articlesCount); track page) {
+              <!-- <li class="page-item active"> -->
+              <li class="page-item">
+                <a class="page-link" href="">{{ page }}</a>
+              </li>
+            }
+          </ul>
+        </ng-container>
       </div>
 
       <div class="col-md-3">
