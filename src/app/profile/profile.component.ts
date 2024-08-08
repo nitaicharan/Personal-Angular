@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { from, map, Observable, of } from 'rxjs';
-import { User } from '../articles/types/User';
-import { Article } from '../articles/types/Article';
-import { ArticleService } from '../services/articles.service';
+import { User } from '../types/User';
+import { Article } from '../types/Article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-profile',
