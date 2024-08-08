@@ -11,4 +11,10 @@ export class ArticleService {
       'https://api.realworld.io/api/articles',
     );
   }
+
+  get(slug: string) {
+    return this.http.get<{ article: Article }>(
+      `https://api.realworld.io/api/articles/${slug}`,
+    );
+  }
 }

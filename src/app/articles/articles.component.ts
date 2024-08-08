@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { from, map, Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { ArticleService } from './articles.service';
 import { CommonModule } from '@angular/common';
 import { Article } from './types/Article';
@@ -27,7 +27,7 @@ export class ArticlesComponent implements OnInit {
   }
 
   generatePageList(items: number) {
-    const offset = 0;
+    // const offset = 0;
     const limit = 10;
 
     const length = Math.ceil(items / limit);

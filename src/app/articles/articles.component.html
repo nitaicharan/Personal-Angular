@@ -20,7 +20,7 @@
           </ul>
         </div>
 
-        <ng-container *ngIf="data$ | async as data">
+        @if (data$ | async; as data) {
           @for (article of data.articles; track article.slug) {
             <div class="article-preview">
               <div class="article-meta">
@@ -48,7 +48,9 @@
                 <span>Read more...</span>
                 @for (tag of article.tagList; track tag) {
                   <ul class="tag-list">
-                    <li class="tag-default tag-pill tag-outline">{{ tag }}</li>
+                    <li class="tag-default tag-pill tag-outline">
+                      {{ tag }}
+                    </li>
                   </ul>
                 }
               </a>
@@ -63,7 +65,7 @@
               </li>
             }
           </ul>
-        </ng-container>
+        }
       </div>
 
       <div class="col-md-3">
