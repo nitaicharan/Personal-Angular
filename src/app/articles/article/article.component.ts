@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../articles.service';
+import { ArticleService } from '../../services/articles.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 import { Article } from '../types/Article';

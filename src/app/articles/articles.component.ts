@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { from, Observable } from 'rxjs';
-import { ArticleService } from './articles.service';
 import { CommonModule } from '@angular/common';
 import { Article } from './types/Article';
+import { ArticleService } from '../services/articles.service';
 
 @Component({
   selector: 'app-articles',
