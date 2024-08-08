@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, of } from 'rxjs';
+import { from, map, Observable, of } from 'rxjs';
 import { User } from '../articles/types/User';
+import { Article } from '../articles/types/Article';
+import { ArticleService } from '../services/articles.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,17 +13,29 @@ import { User } from '../articles/types/User';
   styleUrl: './profile.component.scss',
   standalone: true,
   imports: [CommonModule],
-  providers: [UserService],
+  providers: [UserService, ArticleService],
 })
 export class ProfileComponent implements OnInit {
   profile$: Observable<User> = of();
+  articleData$: Observable<{ articles: Article[]; articlesCount: number }> =
+    from([]);
   constructor(
-    private readonly service: UserService,
+    private readonly userService: UserService,
     private readonly route: ActivatedRoute,
+    private readonly articleService: ArticleService,
   ) {}
 
   ngOnInit(): void {
     const { username }: Record<string, string> = this.route.snapshot.params;
-    this.profile$ = this.service.get(username).pipe(map((i) => i.profile));
+    this.profile$ = this.userService.get(username).pipe(map((i) => i.profile));
+    this.articleData$ = this.articleService.list(username);
+  }
+
+  generatePageList(items: number) {
+    // const offset = 0;
+    const limit = 10;
+
+    const length = Math.ceil(items / limit);
+    return Array.from({ length }, (_, i) => i + 1);
   }
 }

@@ -22,10 +22,6 @@ export class ArticlesComponent implements OnInit {
     this.data$ = this.service.list();
   }
 
-  trackByFn(_: number, item: Article) {
-    return item.slug;
-  }
-
   generatePageList(items: number) {
     // const offset = 0;
     const limit = 10;
