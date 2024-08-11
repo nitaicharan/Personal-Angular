@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { from, map, Observable, of } from 'rxjs';
-import { User } from '../types/User';
-import { Article } from '../types/Article';
-import { ArticleService } from '../services/article.service';
+import { User } from '../../types/User';
+import { Article } from '../../types/Article';
+import { UserService } from '../../services/user.service';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-profile',

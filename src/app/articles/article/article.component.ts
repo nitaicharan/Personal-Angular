@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../../services/article.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
-import { Article } from '../../types/Article';
+import { Article } from '../../../types/Article';
 import { CommonModule } from '@angular/common';
-import { CommentService } from '../../services/comment.service';
-import { Comment } from '../../types/Comment';
+import { Comment } from '../../../types/Comment';
+import { ArticleService } from '../../../services/article.service';
+import { CommentService } from '../../../services/comment.service';
 
 @Component({
   selector: 'app-article',
