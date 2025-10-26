@@ -8,9 +8,9 @@ import { environment } from '../../environments/environment';
 export class Service {
   private readonly httpClient = inject(HttpClient);
 
-  login(email: string, password: string) {
-    return this.httpClient.post(`${environment.API_URL}/users/login`, {
-      user: { email, password },
+  register(username: string, email: string, password: string) {
+    return this.httpClient.post(`${environment.API_URL}/users`, {
+      user: { username, email, password },
     });
   }
 }

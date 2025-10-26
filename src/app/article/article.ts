@@ -11,6 +11,6 @@ import { Service } from './service';
   styleUrl: './article.scss',
 })
 export class Article {
-  private service = inject(Service);
+  private readonly service = inject(Service);
   protected data = toSignal(this.service.list().pipe(shareReplay()));
 }

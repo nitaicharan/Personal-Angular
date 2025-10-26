@@ -1,32 +1,33 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { catchError, first, of } from 'rxjs';
+import { first } from 'rxjs';
 import { Service } from './service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   imports: [ReactiveFormsModule],
-  templateUrl: './login.html',
-  styleUrl: './login.scss',
+  templateUrl: './register.html',
+  styleUrl: './register.scss',
 })
-export class Login {
+export class Register {
   protected errorMessages = signal<string[]>([]);
-  private service = inject(Service);
+  private readonly service = inject(Service);
 
   protected formGroup = new FormGroup({
+    username: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
     email: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.email, Validators.required],
+      validators: [Validators.required, Validators.email],
     }),
     password: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
 
   onSubmit() {
-    const { email, password } = this.formGroup.getRawValue();
+    const { username, email, password } = this.formGroup.getRawValue();
     this.errorMessages.set([]);
 
     this.service
-      .login(email, password)
+      .register(username, email, password)
       .pipe(first())
       .subscribe({
         error: ({ error }) => {

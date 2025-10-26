@@ -2,9 +2,9 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Sign in</h1>
+        <h1 class="text-xs-center">Sign up</h1>
         <p class="text-xs-center">
-          <a href="/register">Need an account?</a>
+          <a href="/login">Have an account?</a>
         </p>
 
         @if (errorMessages().length > 0) {
@@ -15,7 +15,25 @@
           </ul>
         }
 
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <form [formGroup]="formGroup" (submit)="onSubmit()">
+          <fieldset class="form-group">
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              placeholder="Username"
+              formControlName="username"
+            />
+            @if (
+              formGroup.controls.username.invalid &&
+              (formGroup.controls.username.dirty || formGroup.controls.username.touched)
+            ) {
+              <span class="error-messages" style="padding: 0.5rem 0; display: block">
+                @if (formGroup.controls.username.errors?.['required']) {
+                  Username is required
+                }
+              </span>
+            }
+          </fieldset>
           <fieldset class="form-group">
             <input
               class="form-control form-control-lg"
@@ -56,7 +74,7 @@
             }
           </fieldset>
           <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="formGroup.invalid">
-            Sign in
+            Sign up
           </button>
         </form>
       </div>
