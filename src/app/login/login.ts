@@ -11,7 +11,7 @@ import { login } from '../../context/auth';
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login {
+export class LoginComponent {
   protected errorMessages = signal<string[]>([]);
   private service = inject(Service);
   private store = inject(Store);

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ArticleType } from './types/article';
+import { Article } from './types/article';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -10,8 +10,14 @@ export class Service {
   private httpClient = inject(HttpClient);
 
   list() {
-    return this.httpClient.get<{ articlesCount: number; articles: ArticleType[] }>(
+    return this.httpClient.get<{ articlesCount: number; articles: Article[] }>(
       `${environment.API_URL}/articles`,
+    );
+  }
+
+  feeds() {
+    return this.httpClient.get<{ articlesCount: number; articles: Article[] }>(
+      `${environment.API_URL}/feed`,
     );
   }
 }

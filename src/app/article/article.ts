@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { shareReplay } from 'rxjs';
+import { first } from 'rxjs';
 import { Service } from './service';
+import { Store } from '@ngrx/store';
+import { isLoggedInSelector } from '../../context/auth';
+import { Article } from './types/article';
 
 @Component({
   selector: 'app-article',
@@ -10,7 +12,35 @@ import { Service } from './service';
   templateUrl: './article.html',
   styleUrl: './article.scss',
 })
-export class Article {
+export class ArticleComponent implements OnInit {
   private readonly service = inject(Service);
-  protected data = toSignal(this.service.list().pipe(shareReplay()));
+  private readonly store = inject(Store);
+  protected readonly isLoggedIn = this.store.selectSignal(isLoggedInSelector);
+  protected readonly data = signal<Article[]>([]);
+  protected readonly error = signal<string | null>(null);
+  protected readonly activeFeed = signal<'global' | 'personal'>('global');
+
+  ngOnInit(): void {
+    this.loadArticles(this.service.list());
+  }
+
+  handleFeedClick(feedType: ReturnType<typeof this.activeFeed>): void {
+    this.activeFeed.set(feedType);
+    const source$ = feedType === 'global' ? this.service.list() : this.service.feeds();
+    this.loadArticles(source$);
+  }
+
+  private loadArticles(source$: ReturnType<Service['list'] | Service['feeds']>): void {
+    source$.pipe(first()).subscribe({
+      next: ({ articles }) => {
+        this.data.set(articles);
+        this.error.set(null);
+      },
+      error: (err) => {
+        console.error(err);
+        this.data.set([]);
+        this.error.set('Failed to load articles');
+      },
+    });
+  }
 }

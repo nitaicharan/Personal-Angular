@@ -8,13 +8,13 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./article/article').then((m) => m.Article),
+        loadComponent: () => import('./article/article').then((m) => m.ArticleComponent),
         pathMatch: 'full',
       },
-      { path: 'login', loadComponent: () => import('./login/login').then((m) => m.Login) },
+      { path: 'login', loadComponent: () => import('./login/login').then((m) => m.LoginComponent) },
       {
         path: 'register',
-        loadComponent: () => import('./register/register').then((m) => m.Register),
+        loadComponent: () => import('./register/register').then((m) => m.RegisterComponent),
       },
     ],
   },

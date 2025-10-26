@@ -12,16 +12,30 @@
         <div class="feed-toggle">
           <ul class="nav nav-pills outline-active">
             <li class="nav-item">
-              <a class="nav-link active" href="">Global Feed</a>
+              <a
+                class="nav-link"
+                role="button"
+                [class.active]="activeFeed() === 'global'"
+                (click)="handleFeedClick('global')"
+                >Global Feed</a
+              >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Your Feed</a>
-            </li>
+            @if (isLoggedIn()) {
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  role="button"
+                  [class.active]="activeFeed() === 'personal'"
+                  (click)="handleFeedClick('personal')"
+                  >Your Feed</a
+                >
+              </li>
+            }
           </ul>
         </div>
 
         @defer (when data() !== undefined) {
-          @for (article of data()?.articles; track article.id) {
+          @for (article of data(); track article.id) {
             <div class="article-preview">
               <div class="article-meta">
                 @if (article.author.username) {

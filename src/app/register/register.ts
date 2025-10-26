@@ -11,7 +11,7 @@ import { register } from '../../context/auth';
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
-export class Register {
+export class RegisterComponent {
   protected errorMessages = signal<string[]>([]);
   private readonly service = inject(Service);
   private readonly store = inject(Store);

@@ -1,6 +1,6 @@
 import { Author } from './author';
 
-export type ArticleType = {
+export type Article = {
   id: number;
   slug: string;
   title: string;
