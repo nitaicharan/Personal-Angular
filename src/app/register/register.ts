@@ -2,6 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { first } from 'rxjs';
 import { Service } from './service';
+import { Store } from '@ngrx/store';
+import { register } from '../../context/auth';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +14,7 @@ import { Service } from './service';
 export class Register {
   protected errorMessages = signal<string[]>([]);
   private readonly service = inject(Service);
+  private readonly store = inject(Store);
 
   protected formGroup = new FormGroup({
     username: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
@@ -30,6 +33,7 @@ export class Register {
       .register(username, email, password)
       .pipe(first())
       .subscribe({
+        next: (response) => this.store.dispatch(register(response.user)),
         error: ({ error }) => {
           const errors = error?.errors?.body || ['An error occurred'];
           this.errorMessages.set(Array.isArray(errors) ? errors : [errors]);
