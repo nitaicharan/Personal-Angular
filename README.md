@@ -1,59 +1,43 @@
-# Personalangular
+![Angular][angular-shield]
+![TypeScript][typescript-shield]
+![JavaScript][javascript-shield]
+![Sass][sass-shield]
+![CSS][css3-shield]
+![HTML5][html5-shield]
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+<p align="center">:bangbang: Project available to access at: https://nitaicharan.github.io/Personal-Angular :bangbang:</p>
 
-## Development server
+<a href="https://nitaicharan.github.io/Personal-Angular">
+  <p align="center">
+    <img style="height: 100px" src="./PREVIEW.svg">
+  </p>
+</a>
 
-To start a local development server, run:
+## About project
 
-```bash
-ng serve
-```
+This project is part of my personal study about the Angular framework for building scalable web apps with confidence.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Contact
 
-## Code scaffolding
+[![Gmail][gmail-shield]][gmail-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Github][github-shield]][github-url]
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+<!-- CONTACT SHIELDS -->
 
-```bash
-ng generate component component-name
-```
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-white.svg?logo=linkedin&colorB=0077B5&logoColor=white
+[linkedin-url]: https://linkedin.com/in/nitaicharan/
+[gmail-shield]: https://img.shields.io/badge/-Gmail-black.svg?logo=gmail&colorB=D14836&logoColor=white
+[gmail-url]: mailto:niaicharan@gmail.com?subject=It%20comes%20from%20Github%20profile
+[github-shield]: https://img.shields.io/badge/-Github-black.svg?logo=github&colorB=181717&logoColor=white
+[github-url]: https://github.com/nitaicharan
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+<!-- PROJECT SHIELDS -->
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[html5-shield]: https://img.shields.io/badge/-HTML5-black.svg?logo=html5&colorB=E34F26&logoColor=white
+[css3-shield]: https://img.shields.io/badge/-CSS3-black.svg?logo=css3&colorB=1572B6&logoColor=white
+[sass-shield]: https://img.shields.io/badge/-SASS-black.svg?logo=sass&colorB=CC6699&logoColor=white
+[angular-shield]: https://img.shields.io/badge/-Angular-black.svg?logo=angular&colorB=DD0031&logoColor=white
+[java-shield]: https://img.shields.io/badge/-Java-black.svg?logoColor=white&logo=java&&colorB=007396
+[typescript-shield]: https://img.shields.io/badge/-TypeScript-black.svg?logoColor=white&logo=typescript&&colorB=007ACC
+[javascript-shield]: https://img.shields.io/badge/-JavaScript-white.svg?logo=javascript&logoColor=black&colorB=F7DF1E
