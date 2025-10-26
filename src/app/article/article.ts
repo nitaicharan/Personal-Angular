@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DatePipe } from '@angular/common';
-import { ArticlesService } from './services/articles';
 import { shareReplay } from 'rxjs';
+import { Service } from './service';
 
 @Component({
   selector: 'app-article',
@@ -11,6 +11,6 @@ import { shareReplay } from 'rxjs';
   styleUrl: './article.scss',
 })
 export class Article {
-  private service = inject(ArticlesService);
+  private service = inject(Service);
   protected data = toSignal(this.service.list().pipe(shareReplay()));
 }

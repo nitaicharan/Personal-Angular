@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { ArticleType } from '../types/article';
+import { ArticleType } from './types/article';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ArticlesService {
+export class Service {
   private httpClient = inject(HttpClient);
 
   list() {
     return this.httpClient.get<{ articlesCount: number; articles: ArticleType[] }>(
-      environment.API_URL + '/articles',
+      `${environment.API_URL}/articles`,
     );
   }
 }
