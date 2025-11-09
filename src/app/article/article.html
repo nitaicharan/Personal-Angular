@@ -34,8 +34,8 @@
           </ul>
         </div>
 
-        @defer (when data() !== undefined) {
-          @for (article of data(); track article.id) {
+        @defer (when articlesResponse()?.articles !== undefined) {
+          @for (article of articlesResponse().articles; track article.id) {
             <div class="article-preview">
               <div class="article-meta">
                 @if (article.author.username) {
@@ -69,33 +69,27 @@
               </a>
             </div>
           }
+          <ul class="pagination">
+            <li class="page-item active">
+              <a class="page-link" href="">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="">2</a>
+            </li>
+          </ul>
         } @placeholder {
           <div>is loading ...</div>
         }
-
-        <ul class="pagination">
-          <li class="page-item active">
-            <a class="page-link" href="">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="">2</a>
-          </li>
-        </ul>
       </div>
-
       <div class="col-md-3">
         <div class="sidebar">
           <p>Popular Tags</p>
-
           <div class="tag-list">
-            <a href="" class="tag-pill tag-default">programming</a>
-            <a href="" class="tag-pill tag-default">javascript</a>
-            <a href="" class="tag-pill tag-default">emberjs</a>
-            <a href="" class="tag-pill tag-default">angularjs</a>
-            <a href="" class="tag-pill tag-default">react</a>
-            <a href="" class="tag-pill tag-default">mean</a>
-            <a href="" class="tag-pill tag-default">node</a>
-            <a href="" class="tag-pill tag-default">rails</a>
+            @defer (when tagsResponse()?.tags !== undefined) {
+              @for (tag of tagsResponse().tags; track tag) {
+                <a href="" class="tag-pill tag-default">{{ tag }}</a>
+              }
+            }
           </div>
         </div>
       </div>

@@ -20,4 +20,10 @@ export class Service {
       `${environment.API_URL}/feed`,
     );
   }
+
+  tags() {
+    return this.httpClient.get<{
+      tags: string[];
+    }>(`${environment.API_URL}/tags`);
+  }
 }
