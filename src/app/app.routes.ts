@@ -8,7 +8,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./article/article').then((m) => m.ArticleComponent),
+        loadComponent: () => import('./articles/articles').then((m) => m.ArticlesComponent),
         pathMatch: 'full',
       },
       { path: 'login', loadComponent: () => import('./login/login').then((m) => m.LoginComponent) },

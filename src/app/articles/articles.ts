@@ -7,12 +7,12 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-article',
+  selector: 'app-articles',
   imports: [DatePipe],
-  templateUrl: './article.html',
-  styleUrl: './article.scss',
+  templateUrl: './articles.html',
+  styleUrl: './articles.scss',
 })
-export class ArticleComponent {
+export class ArticlesComponent {
   private readonly service = inject(Service);
   private readonly store = inject(Store);
   protected readonly isLoggedIn = this.store.selectSignal(isLoggedInSelector);

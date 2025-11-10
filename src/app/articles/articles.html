@@ -34,7 +34,7 @@
           </ul>
         </div>
 
-        @defer (when articlesResponse()?.articles !== undefined) {
+        @defer (when articlesResponse().articles !== undefined) {
           @for (article of articlesResponse().articles; track article.id) {
             <div class="article-preview">
               <div class="article-meta">
@@ -85,7 +85,7 @@
         <div class="sidebar">
           <p>Popular Tags</p>
           <div class="tag-list">
-            @defer (when tagsResponse()?.tags !== undefined) {
+            @defer (when tagsResponse().tags !== undefined) {
               @for (tag of tagsResponse().tags; track tag) {
                 <a href="" class="tag-pill tag-default">{{ tag }}</a>
               }

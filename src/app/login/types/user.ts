@@ -1,3 +1,3 @@
-import { Author } from '../../article/types/author';
+import { Author } from '../../articles/types/author';
 
 export type User = Partial<Author> & { token?: string };
