@@ -12,6 +12,8 @@ export const isLoggedInSelector = createSelector(
   ({ token }: User) => (token?.length ?? 0) > 0,
 );
 
+export const tokenSelector = createSelector(selectFeature, ({ token }) => token);
+
 export const authReducer = createReducer(
   initialState,
   on(login, (state, payload) => ({ ...state, ...payload })),
